@@ -1,6 +1,7 @@
 package com.example.latfragmentsederhana
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -50,5 +51,20 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.fragment_container, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+
+        cetakBackStack()
+    }
+    private fun cetakBackStack() {
+        val count = supportFragmentManager.backStackEntryCount
+        Log.d("BackStackLog", "=== ISI BACK STACK $count ===")
+
+        for (i in 0 until count) {
+            val entry = supportFragmentManager.getBackStackEntryAt(i)
+            Log.d("BackStackLog", "Index $i: Nama Label = ${entry.name}")
+        }
+
+        Log.d("BackStackLog", "=================================")
+
+
     }
 }
